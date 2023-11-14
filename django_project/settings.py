@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.admin",
-    "django.contrib.auth",
+    "django.contrib.auth", # register 
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -136,3 +136,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL =  "accounts.CustomUser" #new
+
+LOGIN_REDIRECT_URL = "home" #new
+LOGOUT_REDIRECT_URL = "home" #new
