@@ -153,7 +153,8 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 )
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
 ACCOUNT_SESSION_REMEMBER = True  # new
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # new
 
@@ -165,3 +166,13 @@ ACCOUNT_UNIQUE_EMAIL = True  # new
 # django-crispy-forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # new
 CRISPY_TEMPLATE_PACK = "bootstrap5"  # new
+
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"  # new
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  # new
+# env
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'bffkudo1412@gmail.com'
+EMAIL_HOST_PASSWORD = 'borqsnsfqkompwsj'
+EMAIL_USE_TLS = "True"
