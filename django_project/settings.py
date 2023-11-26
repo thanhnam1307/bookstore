@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",  # new
     "allauth",  # new
     "allauth.account",  # new
+    "debug_toolbar",
     #local 
     "accounts.apps.AccountsConfig", #new 
     "pages.apps.PagesConfig", #new 
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.cache.UpdateCacheMiddleware",  # new
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -62,6 +64,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",  # new
+     "django.middleware.cache.FetchFromCacheMiddleware",  # new
 ]
 
 ROOT_URLCONF = "django_project.urls"
@@ -181,3 +185,13 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'bffkudo1412@gmail.com'
 EMAIL_HOST_PASSWORD = 'borqsnsfqkompwsj'
 EMAIL_USE_TLS = "True"
+
+# django-debug-toolbar
+import socket
+
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+CACHE_MIDDLEWARE_ALIAS = "default"
+CACHE_MIDDLEWARE_SECONDS = 604800
+CACHE_MIDDLEWARE_KEY_PREFIX = ""
